@@ -1,0 +1,35 @@
+.container-navbar {
+  width: 100%;
+  height: 13vh;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #834655;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #c8b273;
+}
+ul {
+  font-size: 1.3rem;
+
+  padding-right: 10rem;
+  align-self: center;
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+}
+li {
+  font-weight: 750;
+}
+
+img {
+  justify-self: center;
+}
+.cart {
+  align-self: center;
+  padding-right: 0.5rem;
+  padding-bottom: 1rem;
+}
+span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

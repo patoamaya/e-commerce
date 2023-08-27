@@ -1,0 +1,31 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: center;
+}
+
+.cardImg {
+  height: 10rem;
+  width: auto;
+  border-radius: 15px;
+  margin: 3px 3px;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.342);
+}
+
+.card {
+  width: 20rem;
+  height: 23rem;
+  border: 4px solid #c8b273;
+  border-radius: 6px;
+}
+.title {
+  border-bottom: 2px solid #c8b273;
+}
+
+.card:hover {
+  transform: scale(1.1, 1.1);
+  transition: 0.6s;
+  background-color: #c8b273;
+  box-shadow: 0.4rem 0.3rem;
+}
