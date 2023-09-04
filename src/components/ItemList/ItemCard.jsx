@@ -17,6 +17,7 @@ const ItemCard = ({ item }) => {
         <Typography gutterBottom variant="h5" component="div" className="title">
           {item.marca} {item.modelo}
         </Typography>
+        <Typography variant="body3">$ {item.precio}</Typography>
         <Typography variant="body2">Año: {item.año}</Typography>
         <Typography variant="body2">Kms: {item.KMS}</Typography>
         <Typography variant="body2">Ubicacion: {item.ubicacion}</Typography>

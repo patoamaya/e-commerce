@@ -1,5 +1,7 @@
 import "./App.css";
 import CounterContainer from "./components/Counter/CounterContainer";
+import FetchingData from "./components/FetchingData/FetchingData";
+import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 import Login from "./components/Login/Login";
 import MaterialGrid from "./components/MaterialGrid/MaterialGrid";
@@ -10,10 +12,11 @@ function App() {
     <div className="App">
       <Navbar />
       {/* <CounterContainer /> */}
-
       {/* <MaterialGrid /> */}
       {/* <Login /> */}
+      {/* <FetchingData /> */}
       <ItemListContainer />
+      {/* <ItemDetailContainer /> */}
     </div>
   );
 }
