@@ -1,0 +1,108 @@
+{
+  "products": [
+    {
+      "marca": "FORD",
+      "id": 1,
+      "stock": 2,
+      "modelo": "FIESTA",
+      "año": "2013",
+      "color": "azul",
+      "KMS": "80.000",
+      "precio": "2.600.000",
+      "categoria": "auto",
+      "ubicacion": "Santa Rosa | La Pampa",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587930/autos/fiesta_wq18wq.webp"
+    },
+    {
+      "marca": "FORD",
+      "id": 2,
+      "stock": 3,
+      "modelo": "ECOSPORT",
+      "categoria": "suv",
+      "año": "2019",
+      "color": "BLANCO",
+      "KMS": "25.000",
+      "precio": "3.500.000",
+      "ubicacion": "Lomas de Zamora | GBA Sur",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587930/autos/eco_n94ioq.jpg"
+    },
+    {
+      "marca": "FORD",
+      "id": 3,
+      "stock": 1,
+      "categoria": "auto",
+      "modelo": "MONDEO",
+      "año": "2020",
+      "color": "ROJO",
+      "KMS": "15.000",
+      "precio": "5.000.000",
+      "ubicacion": "Lanús | GBA Sur",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587930/autos/mondeo_wigvzh.jpg"
+    },
+    {
+      "marca": "PEUGEOT",
+      "id": 4,
+      "stock": 6,
+      "modelo": "308",
+      "año": "2019",
+      "color": "NEGRO",
+      "KMS": "60.000",
+      "precio": "4.500.000",
+      "categoria": "auto",
+      "ubicacion": "Montserrat | CABA",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587931/autos/308_phcoth.jpg"
+    },
+    {
+      "marca": "PEUGEOT",
+      "id": 5,
+      "stock": 2,
+      "categoria": "auto",
+      "modelo": "206",
+      "año": "2012",
+      "color": "ROJO",
+      "KMS": "101.000",
+      "precio": "1.950.000",
+      "ubicacion": "Caballito | CABA",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587930/autos/206_id7pvn.jpg"
+    },
+    {
+      "marca": "FIAT",
+      "stock": 1,
+      "categoria": "auto",
+      "id": 6,
+      "modelo": "SIENA",
+      "año": "2015",
+      "color": "BLANCO",
+      "KMS": "125.000",
+      "precio": "2.300.000",
+      "ubicacion": "Palermo | CABA",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587931/autos/siena_t5x9ld.jpg"
+    },
+    {
+      "marca": "CHEVROLET",
+      "id": 7,
+      "stock": 2,
+      "categoria": "auto",
+      "modelo": "CRUZE",
+      "año": "2018",
+      "color": "NEGRO",
+      "KMS": "35.000",
+      "precio": "5.100.000",
+      "ubicacion": "Glew | GBA Sur",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1681587930/autos/cruze_wy3mab.jpg"
+    },
+    {
+      "marca": "RENAULT",
+      "id": 8,
+      "stock": 2,
+      "modelo": "DUSTER",
+      "categoria": "suv",
+      "año": "2009",
+      "color": "GRIS",
+      "KMS": "94.000",
+      "precio": "1.830.000",
+      "ubicacion": "Banfield | GBA Sur",
+      "img": "https://res.cloudinary.com/dx4qsxcb7/image/upload/v1693071291/autos/duster_typlbe.jpg"
+    }
+  ]
+}

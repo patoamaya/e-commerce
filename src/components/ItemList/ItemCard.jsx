@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import "./ItemList.css";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, updateProduct, deleteProduct }) => {
   return (
     <Card className="card" key={item.id}>
       <CardMedia className="cardImg" image={item.img} title={item.modelo} />
@@ -25,6 +25,22 @@ const ItemCard = ({ item }) => {
       <CardActions className="rere">
         <Button variant="contained" size="small" color="secondary">
           Ver más
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={() => updateProduct(item.id, { marca: "Modificado" })}
+        >
+          Editar
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={() => deleteProduct(item.id)}
+        >
+          Borrar
         </Button>
       </CardActions>
     </Card>

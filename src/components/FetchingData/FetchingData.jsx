@@ -13,19 +13,20 @@ const FetchingData = () => {
       });
   }, []);
 
-  const crearNuevoPost = () => {};
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    headers: {
-      authorization: "accesTokenEjemplo123",
-      "content-type": "aplication-json",
-    },
-    body: JSON.stringify({
-      userId: 5,
-      title: "Creando un posteo",
-      descrption: "Prueba de verbo POST",
-    }),
-  });
+  const crearNuevoPost = () => {
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        authorization: "accesTokenEjemplo123",
+        "content-type": "aplication-json",
+      },
+      body: JSON.stringify({
+        userId: 5,
+        title: "Creando un posteo",
+        descrption: "Prueba de verbo POST",
+      }),
+    });
+  };
 
   const editarUser = () => {
     fetch("https://jsonplaceholder.typicode.com/posts/2", {
