@@ -1,0 +1,135 @@
+ROUTING- Primera parte: Rutas y navegación
+
+Su ventaja principal es que podemos cambiar de vista cuando queramos sin necesidad de refrescar la página. SPA( Single Page Application)
+
+Como primera instancia, y a raíz de que react es una librería y no un framework y que cada vez que necesitemos algo debemos instalarlo, vamos a hacer una instalación de la librería de react-router-dom
+
+npm install react-router-dom 
+
+La librería en sí se llama react-router, pero usamos el 'dom' porque hay otra parte que es para apps moviles y no utilizan el dom o browser (react native) 
+
+Una vez instaladas las dependencias, vamos a App.js y empezamos con la creación de las rutas. Primero las importaciones para lo que vamos a usar:
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+El BrowserRouter va a ser el encargado de dejarnos 'circular' por las vistas que tendrá cada componente. Será de apertura y cierre en distintas etiquetas, ya que dentro de él vamos a poner todo el ruteo
+
+Dentro del BrowserRouter habrá otra etiqueta que debemos usar para poder introducir dentro de ella las rutas, ésta es la etiqueta 'Routes', también abriendo y cerrando en distintas líneas.
+
+Ya dentro de Routes, vamos a crear una 'route' para cada vista que queramos renderizar. Para la ruta raíz (/) vamos a poner la lista de productos, que será nuestra página principal.
+
+Más adelante haremos un mensaje de error personalizado, éste ira dentro del path="*", que hace alusión a no haber encontrado una página, sea cual sea el motivo
+
+<BrowserRouter>
+<Routes>
+<Route element ={<ComponenteWrapper/>}
+<Route path="/URL1" element={<componente1/>}/>
+<Route path="/URL2" element={<componente2/>}/>
+</Route>
+</Routes>
+</BrowserRouter>
+
+Para que un componente pueda ser visualizado en las demás vistas (Wrapper Navbar, footer, etc), vamos a crear una Route con apertura y cierre en distintas líneas pero con el element={<Componente/>} unicamente y englobar todas las route que queramos que puedan renderizar ésta.
+
+Una vez hecho esto, debemos dirigirnos al componente wrapper y darle acceso a sus hijos, como haciamos con el children, pero con una propiedad de react-router-dom
+
+Primero la importamos 
+import {Outlet} from react-router-dom
+Luego, sin recibirla como prop como era en los children a la hora de ejecutar la función gral., lo renderizamos como COMPONENTE en el lugar que queremos, en este caso, al ser el Navbar, vamos a renderizarlo al final de nuestra función
+<Outlet/>
+
+
+NAVEGACIÓN ENTRE COMPONENTES
+
+Metodo --->  Link to
+
+La navegación hasta ahora es de manera manual, escribiendo en la URL la dirección a la que queremos ir, pero si queremos que, por ejemplo, con un botón o directamente tocando la tarjeta completa, vaymos a un componente, vamos a tener que realizar unos cambios:
+
+Primero vamos al lugar donde queremos poner el botón o donde queremos que al clickear se abra el componente deseado. En este caso será el itemCard
+
+Importamos {Link} from react-router-dom y lo usamos como etiqueta para envolver el lugar que queremos que vaya cuando clickeemos.
+
+En el to="/direccion" ponemos la dirección que hayamos elegido como path en el app.js
+
+<Link to="/PathElegidoEnApp.js"/>
+<Button>
+Ver más
+</Button>
+</Link>
+
+
+RUTAS DINAMICAS CON PARAMETROS 
+
+Para que podamos capturar un parametro de manera dinámica, debemos usar un hook de React llamado useParams() que llegará como objeto cuando se deba ejecutar.
+
+En principio vamos a app.js y en el path que queramos que se use un parámetro dinámico debemos colocarlo al final con un ":" por delante. Ej:
+path="/itemDetail/:id"
+
+Una vez realizado esto, vamos al componente donde queremos usar los parametros dinámicos e importamos  {useParams} from "react-router-dom"
+
+A la hora de usarlo, lo desestructuramos con el nombre que le pusimos anteriormente despues del ":" en el patch de app.js
+
+const {id} = useParams()
+
+Cuando vayamos al btn, por ej, que queremos que nos lleve a la vista de dicho componente, debemos hacer un cambio para que pueda detectar, mediante el id personal de cada producto, cual será la ruta dinámica a tomar, colocamos de la siguiente manera entre backticks y usando llaves para decirle que vamos a usar JS:
+
+<Link to={`itemDetail/${item.id}`}>
+<Button/>
+</Link>
+
+Una vez hecho esto, en el contenedor, vamos a notar que lo que llega en el find es un string, por lo que no nos va a llevar a ningún lado. Para esto vamos a poner el signo + por delante del id a encontrar, así lo transforma en un number y puede renderizarlo bien
+
+let encontrado = products.find((prod) => prod.id === +id) o escribir Number(id) 
+
+
+Ahora vamos a hacer que cada categoria nos lleve a un tipo de auto diferente, auto o suv 1hs 20
+
+Como primer paso vamos a crear una route nueva en App.js con el element que lleve a ItemListContainer, pero con un path dinámico, metiendo en él un parametro que nos lleve a la categoria que pidamos al momento de clickear
+
+
+FILTRADO NO LLEVA A NINGUN LADO PORQUE LA DIRECCION DE ItemDetail NO TIENE ORIGINALMENTE EL CATEGORY EN EL MEDIO!!!
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ // Aca hacemos uso del hook useCounter
+  // const { counter, increment, decrement } = useCounter();
+const { categoryName } = useParams();
+  // console.log(categoryName);
+
+  const [items, setItems] = useState([]);
+  // const [change, setChange] = useState(false);
+  const [filtrado, setFiltrado] = useState([]);
+
+  useEffect(() => {
+    // setChange(false);
+
+    let data = axios.get("http://localhost:5000/products");
+
+    const filteredProducts = items.filter(
+      (prod) => prod.categoria === categoryName
+    );
+    setFiltrado(filteredProducts);
+    console.log(filtrado);
+
+    data.then((res) => setItems(res.data));
+  }, [categoryName]);
+
+  // const deleteProduct = (id) => {
+  //   axios.delete(`http://localhost:5000/products/${id}`);
+  //   setChange(true);
+  // };
+
+  // const updateProduct = (id, data) => {
+  //   axios.patch(`http://localhost:5000/products/${id}`, data);
+  //   setChange(true);
+  // };
+
+
+
+

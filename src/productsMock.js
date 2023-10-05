@@ -41,6 +41,7 @@ export const products = [
   {
     marca: "PEUGEOT",
     id: 4,
+    categoria: "auto",
     stock: 6,
     modelo: "308",
     año: "2019",

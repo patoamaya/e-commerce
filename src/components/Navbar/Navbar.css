@@ -10,20 +10,24 @@
 }
 ul {
   font-size: 1.3rem;
-
   padding-right: 10rem;
   align-self: center;
   list-style: none;
   display: flex;
   gap: 5rem;
 }
-li {
-  font-weight: 750;
+.link {
+  text-decoration: none;
+  font-weight: 650;
+  color: black;
+  font-size: larger;
 }
 
 img {
   justify-self: center;
+  width: 200px;
 }
+
 .cart {
   align-self: center;
   padding-right: 0.5rem;

@@ -2,43 +2,36 @@ import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import axios from "axios";
 import useCounter from "../../utils/hooks/useCounter";
+import { useParams } from "react-router-dom";
+import { products } from "../../productsMock";
+import useFetch from "../../utils/hooks/useFetch";
+
 // import Button from "@mui/material/Button";
 
 const ItemListContainer = () => {
-  // Aca hacemos uso del hook useCounter
-
-  const { counter, increment, decrement } = useCounter();
+  const { categoryName } = useParams();
 
   const [items, setItems] = useState([]);
-  const [change, setChange] = useState(false);
 
+  const { data } = useFetch("http://localhost:5000/products", []);
   useEffect(() => {
-    setChange(false);
-    let data = axios.get("http://localhost:5000/products");
+    const filteredProducts = data.filter(
+      (prod) => prod.categoria === categoryName
+    );
+    setItems(categoryName ? filteredProducts : data);
 
-    data.then((res) => setItems(res.data));
-  }, [change]);
-
-  const deleteProduct = (id) => {
-    axios.delete(`http://localhost:5000/products/${id}`);
-    setChange(true);
-  };
-
-  const updateProduct = (id, data) => {
-    axios.patch(`http://localhost:5000/products/${id}`, data);
-    setChange(true);
-  };
-
+    console.log(filteredProducts);
+  }, [data, categoryName]);
   return (
     <div>
       <ItemList
         items={items}
-        deleteProduct={deleteProduct}
-        updateProduct={updateProduct}
+        // deleteProduct={deleteProduct}
+        // updateProduct={updateProduct}
       />
-      <h1>{counter}</h1>
+      {/* <h1>{counter}</h1>
       <button onClick={increment}>Sumar</button>
-      <button onClick={decrement}>Restar</button>
+      <button onClick={decrement}>Restar</button> */}
     </div>
   );
 };
