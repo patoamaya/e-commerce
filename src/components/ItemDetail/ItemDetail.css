@@ -1,0 +1,28 @@
+.img {
+  width: 500px;
+  padding: 5px;
+}
+
+.box-img {
+  align-content: center;
+  object-fit: content;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #c8b273;
+  margin-top: 1px;
+  /* width: fit-content; */
+  align-self: center;
+  border-radius: 12px;
+  margin-left: 3px;
+  height: fit-content;
+}
+
+.box-desc {
+  /* border-left-color: grey;
+  border-left-width: 2px;
+  border-left-style: solid; */
+  height: fit-content;
+  border: 2px solid #c8b273;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  margin-right: 5px;
+}

@@ -21,7 +21,7 @@ function App() {
               path="/category/:categoryName"
               element={<ItemListContainer />}
             />
-            <Route path="itemDetail/:id" element={<ItemDetailContainer />} />
+            <Route path="/:id" element={<ItemDetailContainer />} />
             <Route path="*" element={"Error al cargar -- Mensaje de error"} />
           </Route>
         </Routes>

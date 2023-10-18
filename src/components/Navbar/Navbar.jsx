@@ -1,8 +1,9 @@
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
-import { Outlet, Link } from "react-router-dom";
-
+import { Outlet, Link, useNavigate, NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="container-navbar">
@@ -13,15 +14,31 @@ const Navbar = () => {
           />
         </Link>
         <ul>
-          <Link to="/" className="link">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active-link" : "link")}
+          >
             Todos
-          </Link>
-          <Link to="/category/auto" className="link">
+          </NavLink>
+          <NavLink
+            to="/category/auto"
+            className={({ isActive }) => (isActive ? "active-link" : "link")}
+          >
             Autos
-          </Link>
-          <Link to="category/suv" className="link">
+          </NavLink>
+          {/* <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate("/category/auto")}
+          >
+            Autos
+          </Button> */}
+          <NavLink
+            to="category/suv"
+            className={({ isActive }) => (isActive ? "active-link" : "link")}
+          >
             Suvs
-          </Link>
+          </NavLink>
         </ul>
         <div className="cart">
           <span>0</span>

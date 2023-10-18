@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const ItemCard = ({ item, updateProduct, deleteProduct }) => {
   return (
-    <Link to={`itemDetail/${item.id}`} className="link">
+    <Link to={`/${item.id}`} className="link">
       <Card className="card" key={item.id}>
         <CardMedia className="cardImg" image={item.img} title={item.modelo} />
         <CardContent className="rere">

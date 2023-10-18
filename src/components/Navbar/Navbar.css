@@ -4,12 +4,12 @@
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: #834655;
+  background-color: rgb(131, 70, 85);
   margin-bottom: 2rem;
   border-bottom: 3px solid #c8b273;
 }
 ul {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding-right: 10rem;
   align-self: center;
   list-style: none;
@@ -22,7 +22,28 @@ ul {
   color: black;
   font-size: larger;
 }
+.active-link {
+  text-decoration: none;
+  font-weight: 650;
+  color: #0f0f0f;
+  font-size: larger;
+  /* border: 2px solid rgba(0, 0, 0, 0.75); */
+  /* background-color: rgba(0, 0, 0, 0.11); */
+  /* box-shadow: 3px 3px; */
+  /* border-radius: 10px; */
+  border-bottom: 2px solid #c8b273;
+  transition: ease-out 0.4s;
+}
 
+.link:hover {
+  background-color: #c8b1732c;
+  box-shadow: 3px 3px;
+  border-radius: 6px;
+  background-color: #0f0f0f00;
+  color: #000000b6;
+  transition: ease-in 0.3s;
+  padding: 1px;
+}
 img {
   justify-self: center;
   width: 200px;

@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #834655;
+  background-color: rgba(0, 0, 0, 0.24);
+  /* background-color: #834655; */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
