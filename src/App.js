@@ -9,6 +9,7 @@ import MaterialGrid from "./components/MaterialGrid/MaterialGrid";
 import Navbar from "./components/Navbar/Navbar";
 import PruebaFetchDos from "./components/PrubaFetchDos/PruebaFetchDos";
 import PruebaFetchUno from "./components/PruebaFetchUno/PruebaFetchUno";
+import CartContainer from "./components/Cart/CartContainer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               path="/category/:categoryName"
               element={<ItemListContainer />}
             />
+            <Route path="/cart" element={<CartContainer />} />
             <Route path="/:id" element={<ItemDetailContainer />} />
             <Route path="*" element={"Error al cargar -- Mensaje de error"} />
           </Route>
