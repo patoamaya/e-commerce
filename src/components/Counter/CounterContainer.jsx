@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Counter from "./Counter";
 
-const CounterContainer = () => {
+const CounterContainer = ({ stock, onAdd }) => {
   const [counter, setCounter] = useState(0);
-  // No más de 10 unidades. En vez de hardcodear el 10, podemos usar, trayendo de una base de datos, el stock disponible
   const sumar = () => {
-    counter < 10 && setCounter(counter + 1);
+    if (counter < stock) {
+      setCounter(counter + 1);
+    } else {
+      alert("no hay mas mogolico cortala");
+    }
   };
   const restar = () => {
     if (counter > 0) {
@@ -23,6 +26,7 @@ const CounterContainer = () => {
         restar={restar}
         reiniciar={reiniciar}
         counter={counter}
+        onAdd={onAdd}
       />
     </div>
   );

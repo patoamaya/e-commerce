@@ -2,7 +2,8 @@ import { Box, Grid, Button } from "@mui/material";
 import React from "react";
 import "./ItemDetail.css";
 import { useNavigate } from "react-router-dom";
-const ItemDetail = ({ product }) => {
+import CounterContainer from "../Counter/CounterContainer";
+const ItemDetail = ({ product, onAdd }) => {
   let navigate = useNavigate();
 
   const goBack = () => {
@@ -29,8 +30,8 @@ const ItemDetail = ({ product }) => {
           <h2>{product.año}</h2>
           <h2>{product.KMS} kms</h2>
           <h2>{product.ubicacion} </h2>
+          <CounterContainer stock={product.stock} onAdd={onAdd} />
         </Box>
-        <Box></Box>
       </Grid>
     </Grid>
 
