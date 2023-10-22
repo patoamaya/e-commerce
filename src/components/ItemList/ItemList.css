@@ -14,10 +14,11 @@
 }
 
 .card {
-  width: 20rem;
-  height: 24rem;
+  width: 18rem;
+  height: fit-content;
   border: 4px solid #c8b273;
   border-radius: 6px;
+  margin-bottom: 2px;
 }
 .title {
   border-bottom: 2px solid #c8b273;

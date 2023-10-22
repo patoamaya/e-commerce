@@ -29,27 +29,6 @@ const ItemCard = ({ item, updateProduct, deleteProduct }) => {
           <Typography variant="body2">Kms: {item.KMS}</Typography>
           <Typography variant="body2">Ubicacion: {item.ubicacion}</Typography>
         </CardContent>
-        <CardActions className="rere">
-          <Button variant="contained" size="small" color="secondary">
-            Ver más
-          </Button>
-          {/* <Button
-          variant="contained"
-          size="small"
-          color="primary"
-          onClick={() => updateProduct(item.id, { marca: "Modificado" })}
-          >
-          Editar
-        </Button> */}
-          {/* <Button
-          variant="contained"
-          size="small"
-          color="primary"
-          onClick={() => deleteProduct(item.id)}
-          >
-          Borrar
-        </Button> */}
-        </CardActions>
       </Card>
     </Link>
   );

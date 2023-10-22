@@ -24,5 +24,13 @@
   border: 2px solid #c8b273;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
+  margin-top: 0.2rem;
   margin-right: 5px;
+}
+
+.volver {
+  display: flex;
+  justify-content: start;
+  margin-top: -2rem;
+  margin-left: 0.3rem;
 }
