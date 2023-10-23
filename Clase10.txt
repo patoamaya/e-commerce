@@ -1,0 +1,145 @@
+Eventos
+
+Cremos la vista Cart y hacemos que se pueda llegar a ella mediante un click en el icono del carrito. Usamos el Link
+
+Recordar que si la función que queremos ejecutar en un Btn tiene parámetros, no ejecutamos directamente en el Onclick, sino que la ejecutamos mediante una función flecha dentro de él, asi se ejecuta cuando se ejecute dicha función:
+
+Onclick(()=>{
+    sumar(num)
+})
+
+
+EVENTO DE FORMULARIO:
+
+Creamos otra vista llamada Form y dentro de él, metemos un form con inputs, btn etc
+
+Para capturar lo que se escribe dentro de los inputs, usaremos el evento onChange
+
+Creamos un estado para almacenar los datos que queremos capturar. Se puede inicializar como un string vacío, pero eso haría que tuviésemos que crear estados para cada input, y de tratarse de un formulario muy extenso, serían muchos estados, por lo que podemos crear un solo estado general e inicializarlo con un objeto vacio para que vayan almacenándose los datos dinámicamente
+
+Le ponemos a los inputs su value, el cual nos permitirá absorberlo más adelante con ese nombre
+
+Para saber, luego de hacer el envío del formulario, en qué input estoy posicionado, tenemos la propiedad "name". Ésta tiene el mismo valor que el "value", pero sin las llaves.
+
+En la función envioDeFormulario(e) vamos a escribir e.preventDefault() y así evitamos lo mencionado
+Antes que nada, para que no se refresque la página cuando demos enviar en el btn que asignemos al formulario, vamos a prevenir el comportamiento por defecto que trae dicho evento.  
+
+onChange:
+
+Se asigna a cualquier input. Va a ir detectando cada vez que se cambie algo dentro del input, ya sea porque se escribió o se borró
+Recibe dentro de él una función, como parámetro, de manera AUTOMATICA, pongamos lo que pongamos, traerá el evento onChange.
+Este evento se disparará cada vez que se toque una tecla en el input
+
+Si le hacemos un console.log(e) vamos a ver que trae mucha información, pero, usualmente, se utiliza el target.
+
+Podemos acceder a lo que escribe el usuario con la propiedad target > value    = >  e.target.value
+
+Lo seteamos con el nombre del estado que hayamos elegido, por ejemplo:
+
+onChange={(e) => {
+            setNombre(e.target.value);
+            console.log(nombre);
+          }}
+
+
+
+onSubmit:
+Evento que se ejecuta cuando el formulario se envía, mediante un click en el botón que asignemos
+Para usar un boton con otro fin que no sea enviar el formulario, debemos ponerlo el type = "button", ya que sino, dentro del formulario, va a tener por defecto un type ="submit"
+Se aplica en la etiqueta form y puede ejecutar una función (Recomendable hacer dicha función por afuera del onSubmit y asignarla en él. NO ejecutándose)
+Al hacer la función, recibiremos como parámetro el evento, pero tal como es en el onChange, react ya detecta sólo que llegará el "e", asi que no hay que pasárselo cuando lo asignemos al onSubmit. Se puede envíar de todas formas y ejecutarlo como vimos antes, dependiente de una función flecha ej:
+
+<form
+        onSubmit={(e) => {
+          envioDeFormulario(e);
+        }}
+      >
+Si le hacemos console.log(e) en la funcion envioDeFormulario, vamos a ver todo lo que trae el formulario una vez envíado
+
+En la función envioDeFormulario que se ejecuta en el onSubmit es donde haríamos la lógica de un LOGIN, por ejemplo, donde le pasaríamos la data del usuario ingresada en los inputs al backend en el método post, por ej:
+
+let dataLogin = {
+    nombre:nombre,
+    apellido:apellido
+}
+axios.post("url/login", dataLogin).
+
+El back recibiría y constataría que esté o no autorizado 
+
+Hasta acá la primera parte del video, receso.
+
+2da parte, acá vamos a emplear el uso de un estado único para almacenar todos los datos y no uno por cada dato
+
+const [userData, setUserData] = useState({
+  nombre: "",
+  apellido: ""})
+
+Para poder setear lo almacenado en cada input en ese estado, vamos a hacer un cambio a la hora del seteado
+input.
+Si hacemos directamente el seteado con el e.target.value, vamos a cambiar de objeto a string en el estado, mientras que lo que necesitamos es cambiar unicamente la value de la key que precisemos (nombre, apellido, etc)
+Para esto, nos valdremos del Spread Operator, que indicará dentro del seteo, que queremos que se modifique la key que elijamos, pero que a su vez, mantenga todo lo demás intacto
+
+onChange{(e)=>{
+  setUserData({...userData, nombre:e.target.value})
+  setUserData({...userData, apellido:e.target.value})
+}}
+/input
+
+
+Esto puede ser algo tedioso, escribir en cada onChange casi lo mismo por input queda desprolijo.
+
+Vamos a crear una funcion para manejar el interior de él y luego meterla dentro del onChange directamente
+
+El evento, además de traernos el e.target.value, trae consigo otra propiedad que nos permite ver el "name", éste ya lo hemos especificado anteriormente en cada input para detectarlo en este momento. Es de vita importancia que éste "name" sea exactamente el mismo que usamos como key en userData, así coinciden y podemos modificar su value correctamente
+Si escribimos a secas el "e.target.name" se va a romper el código, ya que éste llega como string, pero a la vez lo queremos usar como una variable, por lo tanto, vamos a encerrarlo entre [] para que funcione. Explicación:
+
+Cuando la variable llega como string, no se puede usar el dot notation, entonces para acceder a la propiedad del obj deseada, debemos usar los []
+
+por ej:
+
+let persona = {
+  nombre: "pato",
+  apellido: "amaya",
+  edad:"25"
+}
+
+dot notation
+console.log(persona.nombre)
+
+bracket notation
+console.log(persona["nombre"])
+
+Ambos casos funcionarán perfectamente, solo que si quisiera acceder al string desde el dot, no podría
+
+const handleChange = (e) => {setUserData({...userData, [e.target.name]:  e.target.value})}
+
+en el input:
+
+onChange{handleChange} ó
+onChange{(e)=>{handleChange(e)}}
+
+Ahora a partir de 1:39 vamos a mejorar el e-commerce, haciendo que el counter aparezca en el ItemDetail
+
+Después de importar CounterContainer en ItemDetail, lo renderizamos y le pasamos como prop, ya que ahora ItemDetail es el "padre" de CounterContainer, el stock que corresponde a {prop.stock} y así utilizarlo para, con un ternario, evitar que pueda sumarse más de lo que hay disponible.
+
+Creamos la funcion onAdd, que nos servirá para agregar al carrito los items que queramos.
+
+La creamos en el ItemDetailContainer, ya que ahí tenemos todos los datos del product para usar, y como renderizamos en él el CounterContainer, podemos pasarle como prop dicha funcion
+
+La funcion onAdd tiene como parámetro el "cantidad", que cuando la ejecutemos, tendrá como argumento el estado "counter" que se encuentra en el componente counter
+
+ const onAdd = (cantidad) => {
+    console.log(`Se agregaron ${cantidad} ${product.marca}`)
+  };
+
+  la vamos pasando como prop, primero al ItemDetail y de ahi al CounterContainer.
+
+  Cuando la ejecutemos en el counter, lo hacemos asi
+
+  <button
+        onClick={() => {
+          onAdd(counter );
+        }}
+      >
+
+      Entonces, cada vez que clickeemos el agregar al carrito, tendremos el clg con los datos de lo que agregamos
