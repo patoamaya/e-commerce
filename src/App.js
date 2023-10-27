@@ -11,23 +11,28 @@ import PruebaFetchDos from "./components/PrubaFetchDos/PruebaFetchDos";
 import PruebaFetchUno from "./components/PruebaFetchUno/PruebaFetchUno";
 import CartContainer from "./components/Cart/CartContainer";
 import Form from "./components/Form/Form";
+import CartContextProvider from "./context/CartContext";
+import { useContext } from "react";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route element={<Navbar />}>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/form" element={<Form />} />
-            <Route
-              path="/category/:categoryName"
-              element={<ItemListContainer />}
-            />
-            <Route path="/cart" element={<CartContainer />} />
-            <Route path="/:id" element={<ItemDetailContainer />} />
-            <Route path="*" element={"Error al cargar -- Mensaje de error"} />
-          </Route>
-        </Routes>
+        <CartContextProvider>
+          <Routes>
+            <Route element={<Navbar />}>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/form" element={<Form />} />
+              <Route
+                path="/category/:categoryName"
+                element={<ItemListContainer />}
+              />
+              <Route path="/cart" element={<CartContainer />} />
+              <Route path="/:id" element={<ItemDetailContainer />} />
+              <Route path="*" element={"Error al cargar -- Mensaje de error"} />
+            </Route>
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
     </div>
   );

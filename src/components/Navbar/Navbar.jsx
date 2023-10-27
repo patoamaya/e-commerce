@@ -2,7 +2,11 @@ import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import { Outlet, Link, useNavigate, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+
 const Navbar = () => {
+  const { cart } = useContext(CartContext);
   const navigate = useNavigate();
   return (
     <div>
@@ -42,7 +46,7 @@ const Navbar = () => {
         </ul>
         <div className="cart">
           <Link to="/cart" className="link">
-            <span>0</span>
+            <span>{cart.length}</span>
             <CartWidget />
           </Link>
         </div>
