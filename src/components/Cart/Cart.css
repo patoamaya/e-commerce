@@ -1,3 +1,5 @@
-.no {
-  visibility: hidder;
+.item {
+  border: 2px solid black;
+  padding: 1rem;
+  margin: 0.5rem;
 }

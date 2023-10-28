@@ -11,10 +11,15 @@ const CartContextProvider = ({ children }) => {
   const vaciarCarrito = () => {
     setCart([]);
   };
+  const borrarProducto = (id) => {
+    const filterBorrado = cart.filter((elemento) => elemento.id !== id);
+    setCart(filterBorrado);
+  };
   let data = {
     cart,
     agregarAlCarrito,
     vaciarCarrito,
+    borrarProducto,
   };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

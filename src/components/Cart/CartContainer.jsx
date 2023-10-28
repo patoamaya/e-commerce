@@ -3,8 +3,19 @@ import Cart from "./Cart";
 import { CartContext } from "../../context/CartContext";
 
 const CartContainer = () => {
-  const { cart, vaciarCarrito } = useContext(CartContext);
-  return <div>{<Cart cart={cart} vaciarCarrito={vaciarCarrito} />}</div>;
+  const { cart, vaciarCarrito, borrarProducto } = useContext(CartContext);
+
+  return (
+    <div>
+      {
+        <Cart
+          cart={cart}
+          vaciarCarrito={vaciarCarrito}
+          borrarProducto={borrarProducto}
+        />
+      }
+    </div>
+  );
 };
 
 export default CartContainer;
