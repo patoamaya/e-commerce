@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   // const { counter, increment, decrement } = useCounter();
   const { id } = useParams();
-  const { agregarAlCarrito } = useContext(CartContext);
+  const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
   const onAdd = (cantidad) => {
     let data = {
       ...product,
@@ -18,6 +18,9 @@ const ItemDetailContainer = () => {
     agregarAlCarrito(data);
     // console.log(data);
   };
+  let cantidadTotal = getQuantityById(product.id)
+  // console.log(cantidadTotal)
+  
 
   useEffect(() => {
     let encontrado = products.find((prod) => prod.id === +id);
@@ -27,7 +30,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      {<ItemDetail product={product} onAdd={onAdd} />}
+      {<ItemDetail product={product} onAdd={onAdd} cantidadTotal={cantidadTotal}  />}
       {/* <h1>{counter}</h1> */}
       {/* <button onClick={increment}>Sumar</button>
       <button onClick={decrement}>Restar</button> */}

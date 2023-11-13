@@ -3,7 +3,7 @@ import React from "react";
 import "./ItemDetail.css";
 import { useNavigate } from "react-router-dom";
 import CounterContainer from "../Counter/CounterContainer";
-const ItemDetail = ({ product, onAdd }) => {
+const ItemDetail = ({ product, onAdd, cantidadTotal }) => {
   let navigate = useNavigate();
 
   const goBack = () => {
@@ -30,7 +30,7 @@ const ItemDetail = ({ product, onAdd }) => {
           <h2>{product.año}</h2>
           <h2>{product.KMS} kms</h2>
           <h2>{product.ubicacion} </h2>
-          <CounterContainer stock={product.stock} onAdd={onAdd} />
+          <CounterContainer stock={product.stock} onAdd={onAdd} initial={cantidadTotal}  />
         </Box>
       </Grid>
     </Grid>

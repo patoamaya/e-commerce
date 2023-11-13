@@ -36,13 +36,13 @@ ul {
 }
 
 .link:hover {
-  background-color: #c8b1732c;
+  /* background-color: #c8b1732c;
   box-shadow: 3px 3px;
   border-radius: 6px;
   background-color: #0f0f0f00;
-  color: #000000b6;
+  padding: 1px; */
   transition: ease-in 0.3s;
-  padding: 1px;
+  color: #362626a6;
 }
 img {
   justify-self: center;

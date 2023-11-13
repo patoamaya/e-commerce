@@ -28,7 +28,7 @@ export const products = [
   {
     marca: "FORD",
     id: 3,
-    stock: 1,
+    stock: 3,
     categoria: "auto",
     modelo: "MONDEO",
     año: "2020",

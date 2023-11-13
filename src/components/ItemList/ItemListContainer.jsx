@@ -14,24 +14,39 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const { data } = useFetch("http://localhost:5000/products", []);
+  
   useEffect(() => {
+    
+    
     const filteredProducts = data.filter(
       (prod) => prod.categoria === categoryName
-    );
-    setItems(categoryName ? filteredProducts : data);
+      );
+      setTimeout(() => {
+        
+        setItems(categoryName ? filteredProducts : data)
+        
+      }, 3000);
+      
+      console.log(filteredProducts);
+      
+    }, [data, categoryName]);
 
-    console.log(filteredProducts);
-  }, [data, categoryName]);
-  return (
-    <div>
+    if(items.length === 0){
+      return<h2>cargandoooooooooooo no te vayas gatinn</h2>
+    }
+    
+    
+    return (
+     
+      <div>
       <ItemList
         items={items}
         // deleteProduct={deleteProduct}
         // updateProduct={updateProduct}
-      />
+        />
       {/* <h1>{counter}</h1>
       <button onClick={increment}>Sumar</button>
-      <button onClick={decrement}>Restar</button> */}
+    <button onClick={decrement}>Restar</button> */}
     </div>
   );
 };
