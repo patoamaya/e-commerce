@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { createContext } from "react";
+import Swal from "sweetalert2";
+
 
 export const CartContext = createContext();
 
@@ -7,6 +9,14 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const agregarAlCarrito = (product) => {
+    Swal.fire({
+      position: "top-end",
+      color:"#c8b273",
+      background:"rgb(131, 70, 85)",
+      title: `Agregaste ${product.quantity} unidad/es de ${product.marca} ${product.modelo}`,
+      showConfirmButton: false,
+      timer: 1500
+    });
     let existe = yaAgregado(product.id);
     if (existe) {
       let newCart = cart.map((elemento) => {
@@ -25,11 +35,51 @@ const CartContextProvider = ({ children }) => {
     }
   };
   const vaciarCarrito = () => {
-    setCart([]);
+    Swal.fire({
+      title: "¿Desea vaciar el carrito?",
+      icon: "warning",
+      color:"#c8b273",
+      background:"rgb(131, 70, 85)",
+      showCancelButton: true,
+      confirmButtonColor: "#c8b273",
+      cancelButtonColor: "#d33",
+      cancelButtonText:"Cancelar",
+      confirmButtonText: "Confirmar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          background:"rgb(131, 70, 85)",
+          color:"white",
+          title: "Su carrito se ha vaciado!"
+        });
+        setCart([]);
+      }
+    });
+    
+
   };
   const borrarProducto = (id) => {
     const filterBorrado = cart.filter((elemento) => elemento.id !== id);
-    setCart(filterBorrado);
+    Swal.fire({
+      title: "¿Quiere borrar este producto?",
+      color:"#c8b273",
+      background:"rgb(131, 70, 85)",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#c8b273",
+      cancelButtonColor: "#d33",
+      cancelButtonText:"Cancelar",
+      confirmButtonText: "Confirmar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          background:"rgb(131, 70, 85)",
+          color:"white",
+          title: "Producto eliminado"
+        });
+        setCart(filterBorrado);
+      }
+    });
   };
   const yaAgregado = (id) => {
     let existe = cart.some((elemento) => elemento.id === id);

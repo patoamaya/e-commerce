@@ -4,6 +4,8 @@ import { products } from "../../productsMock";
 import useCounter from "../../utils/hooks/useCounter";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import Swal from "sweetalert2";
+
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
@@ -16,6 +18,7 @@ const ItemDetailContainer = () => {
       quantity: cantidad,
     };
     agregarAlCarrito(data);
+    
     // console.log(data);
   };
   let cantidadTotal = getQuantityById(product.id)

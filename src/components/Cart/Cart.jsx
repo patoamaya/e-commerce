@@ -17,6 +17,7 @@ const Cart = ({ cart, vaciarCarrito, borrarProducto, total }) => {
               variant="outlined"
               color="secondary"
               onClick={() => borrarProducto(item.id)}
+              
             >
               Eliminar producto
             </Button>

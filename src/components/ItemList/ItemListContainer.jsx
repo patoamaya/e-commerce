@@ -5,6 +5,9 @@ import useCounter from "../../utils/hooks/useCounter";
 import { useParams } from "react-router-dom";
 import { products } from "../../productsMock";
 import useFetch from "../../utils/hooks/useFetch";
+import { InfinitySpin } from "react-loader-spinner";
+import Swal from "sweetalert2";
+
 
 // import Button from "@mui/material/Button";
 
@@ -24,16 +27,20 @@ const ItemListContainer = () => {
       setTimeout(() => {
         
         setItems(categoryName ? filteredProducts : data)
+       
         
-      }, 3000);
+      }, 1000);
       
       console.log(filteredProducts);
       
     }, [data, categoryName]);
 
     if(items.length === 0){
-      return<h2>cargandoooooooooooo no te vayas gatinn</h2>
-    }
+      return( 
+      <div className="loader">
+        <InfinitySpin width="200" color="rgb(131, 70, 85)"/>
+      </div>
+    )}
     
     
     return (

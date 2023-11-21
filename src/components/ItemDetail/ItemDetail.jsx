@@ -30,7 +30,7 @@ const ItemDetail = ({ product, onAdd, cantidadTotal }) => {
           <h2>{product.año}</h2>
           <h2>{product.KMS} kms</h2>
           <h2>{product.ubicacion} </h2>
-          <CounterContainer stock={product.stock} onAdd={onAdd} initial={cantidadTotal}  />
+          <CounterContainer stock={product.stock} onAdd={onAdd} initial={cantidadTotal} marca ={product.marca} modelo={product.modelo}  />
         </Box>
       </Grid>
     </Grid>

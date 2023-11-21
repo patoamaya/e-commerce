@@ -33,3 +33,11 @@
 .link {
   text-decoration: none;
 }
+
+.loader{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin-top: 200px;
+  
+}
